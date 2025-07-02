@@ -17,6 +17,7 @@
             margin: 0;
             padding: 0;
             background-color: #f7fafc; /* bg-gray-100 */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         }
     </style>
 </head>
@@ -44,41 +45,60 @@
         const Star = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></Icon>;
         const ArrowLeft = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></Icon>;
         const MenuIcon = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg></Icon>;
+        const CreditCard = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></Icon>;
+        const User = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></Icon>;
+        const Plus = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></Icon>;
+        const Minus = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg></Icon>;
+        const Trash2 = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></Icon>;
+        const Camera = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></Icon>;
+        const MessageSquare = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></Icon>;
+        const Send = (props) => <Icon {...props}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></Icon>;
 
         //======================================================================
-        // DADOS MOCK (Simulação de Base de Dados)
+        // LÓGICA DO BANCO DE DADOS VIRTUAL (localStorage)
         //======================================================================
-        const mockAtelies = [
-          { id: 1, nome: "Costuras da Ana", endereco: "Rua das Flores, 123, Araranguá, SC", especialidade: "Ajustes e Reparos", telefone: "(48) 99988-7766", email: "ana@costuras.com", avaliacao: 4.8, images: ["https://placehold.co/600x400/f472b6/ffffff?text=Criação+1", "https://placehold.co/600x400/ec4899/ffffff?text=Criação+2", "https://placehold.co/600x400/db2777/ffffff?text=Criação+3"] },
-          { id: 2, nome: "Ateliê Fio de Ouro", endereco: "Av. Central, 456, Criciúma, SC", especialidade: "Vestidos de Festa", telefone: "(48) 98877-6655", email: "contato@fiodeouro.com", avaliacao: 4.9, images: ["https://placehold.co/600x400/a855f7/ffffff?text=Festa+1", "https://placehold.co/600x400/9333ea/ffffff?text=Festa+2", "https://placehold.co/600x400/7e22ce/ffffff?text=Festa+3"] },
-          { id: 3, nome: "Ponto a Ponto Alta Costura", endereco: "Praça da Matriz, 789, Sombrio, SC", especialidade: "Ternos e Roupas Sociais", telefone: "(48) 97766-5544", email: "contato@pontoaponto.com", avaliacao: 4.7, images: ["https://placehold.co/600x400/6366f1/ffffff?text=Social+1", "https://placehold.co/600x400/4f46e5/ffffff?text=Social+2", "https://placehold.co/600x400/4338ca/ffffff?text=Social+3"] },
+        const { useState, useEffect } = React;
+
+        const getInitialData = (key, mockData) => {
+            try {
+                const storedData = localStorage.getItem(key);
+                if (storedData) {
+                    return JSON.parse(storedData);
+                }
+            } catch (error) {
+                console.error("Erro ao ler do localStorage:", error);
+            }
+            localStorage.setItem(key, JSON.stringify(mockData));
+            return mockData;
+        };
+
+        const initialMockAtelies = [
+          { id: 1, nome: "Costuras da Ana", endereco: "Rua das Flores, 123, Araranguá, SC", especialidade: "Ajustes e Reparos", telefone: "(48) 99988-7766", email: "ana@costuras.com", avaliacao: 4.8, description: "Com mais de 10 anos de experiência, o Costuras da Ana oferece serviços de alta qualidade em ajustes, reparos e confecção sob medida. Usamos os melhores materiais para garantir um acabamento perfeito em cada peça.", images: ["https://placehold.co/600x400/f472b6/ffffff?text=Criação+1", "https://placehold.co/600x400/ec4899/ffffff?text=Criação+2", "https://placehold.co/600x400/db2777/ffffff?text=Criação+3"] },
+          { id: 2, nome: "Ateliê Fio de Ouro", endereco: "Av. Central, 456, Criciúma, SC", especialidade: "Vestidos de Festa", telefone: "(48) 98877-6655", email: "contato@fiodeouro.com", avaliacao: 4.9, description: "Especializadas em vestidos de noiva e festa, transformamos sonhos em realidade com criações exclusivas e deslumbrantes.", images: ["https://placehold.co/600x400/a855f7/ffffff?text=Festa+1", "https://placehold.co/600x400/9333ea/ffffff?text=Festa+2", "https://placehold.co/600x400/7e22ce/ffffff?text=Festa+3"] },
+          { id: 3, nome: "Ponto a Ponto Alta Costura", endereco: "Praça da Matriz, 789, Sombrio, SC", especialidade: "Ternos e Roupas Sociais", telefone: "(48) 97766-5544", email: "contato@pontoaponto.com", avaliacao: 4.7, description: "Ternos, camisas e calças sociais com corte impecável e tecidos de primeira linha para o homem moderno.", images: ["https://placehold.co/600x400/6366f1/ffffff?text=Social+1", "https://placehold.co/600x400/4f46e5/ffffff?text=Social+2", "https://placehold.co/600x400/4338ca/ffffff?text=Social+3"] },
         ];
-        const mockPedidos = [
-          { id: 101, cliente: "Maria Silva", servico: "Ajuste de vestido", dataEntrada: "2025-06-20", dataPrevista: "2025-06-28", status: "Em Progresso", valor: 50.00, costureira: "Ana" },
-          { id: 102, cliente: "João Santos", servico: "Bainha de calça jeans", dataEntrada: "2025-06-22", dataPrevista: "2025-06-25", status: "Concluído", valor: 25.00, costureira: "Lúcia" },
-          { id: 103, cliente: "Carla Souza", servico: "Criação de saia godê", dataEntrada: "2025-06-18", dataPrevista: "2025-07-05", status: "Aguardando Material", valor: 120.00, costureira: "Ana" },
-          { id: 104, cliente: "Pedro Costa", servico: "Reparo em zíper de jaqueta", dataEntrada: "2025-06-24", dataPrevista: "2025-06-27", status: "Novo", valor: 30.00, costureira: "Lúcia" },
+        const initialMockPedidos = [
+          { id: 101, clienteId: 1, atelieId: 1, servico: "Ajuste de vestido", dataEntrada: "2025-07-01", dataPrevista: "2025-07-08", status: "Em Progresso", valor: 10.00, costureira: "Ana", pagamento: "Cartão de Crédito" },
+          { id: 102, clienteId: 2, atelieId: 1, servico: "Bainha de calça jeans", dataEntrada: "2025-06-22", dataPrevista: "2025-06-25", status: "Concluído", valor: 5.00, costureira: "Lúcia", pagamento: "PIX" },
         ];
-        const mockEstoque = [
-          { id: 1, item: "Linha Branca (cone)", quantidade: 15, nivelMinimo: 10 },
-          { id: 2, item: "Linha Preta (cone)", quantidade: 8, nivelMinimo: 10 },
-          { id: 3, item: "Zíper 20cm (unidade)", quantidade: 35, nivelMinimo: 50 },
-          { id: 4, item: "Tecido Viscose (metro)", quantidade: 5, nivelMinimo: 5 },
-          { id: 5, item: "Botão de Madrepérola (dúzia)", quantidade: 20, nivelMinimo: 15 },
-        ];
-        const mockClientes = [
+        const initialMockEstoque = [ { id: 1, item: "Linha Branca (cone)", quantidade: 15, nivelMinimo: 10 }, { id: 2, item: "Linha Preta (cone)", quantidade: 8, nivelMinimo: 10 }];
+        const initialMockClientes = [
             { id: 1, nome: "Maria Silva", telefone: "(48) 91122-3344", email: "maria.s@email.com", desde: "2024-01-15" },
             { id: 2, nome: "João Santos", telefone: "(48) 92233-4455", email: "joao.s@email.com", desde: "2023-11-20" },
-            { id: 3, nome: "Carla Souza", telefone: "(48) 93344-5566", email: "carla.s@email.com", desde: "2024-03-10" },
-            { id: 4, nome: "Pedro Costa", telefone: "(48) 94455-6677", email: "pedro.c@email.com", desde: "2024-05-01" },
+        ];
+        const initialMockFaturamento = [ { mes: 'Mar/25', valor: 250.00 }, { mes: 'Abr/25', valor: 360.10 }, { mes: 'Mai/25', valor: 300.15 }, { mes: 'Jun/25', valor: 420.00 }];
+        const initialMockNovosClientes = [ { mes: 'Mar/25', quantidade: 1 }, { mes: 'Abr/25', quantidade: 2 }, { mes: 'Mai/25', quantidade: 1 }, { mes: 'Jun/25', quantidade: 3 }];
+        const initialMockItensGastos = [ { item: 'Linha Preta', quantidade: 30 }, { item: 'Linha Branca', quantidade: 25 }, { item: 'Zíper 20cm', quantidade: 18 }];
+        const initialMockPagamentos = [ {id: 1, data: "2025-06-25", pedidoId: 102, valor: 5.00, metodo: "Cartão de Crédito"}, {id: 2, data: "2025-05-10", pedidoId: 98, valor: 30.00, metodo: "PIX"} ];
+        const initialMockMessages = [
+            { id: 1, clienteId: 1, atelieId: 1, sender: 'cliente', text: 'Olá, gostaria de um orçamento para ajustar um vestido de festa.', timestamp: '2025-06-30T10:00:00Z' },
+            { id: 2, clienteId: 1, atelieId: 1, sender: 'atelie', text: 'Olá, Maria! Claro. O valor fica $10.00. Posso gerar o pedido?', timestamp: '2025-06-30T10:05:00Z', type: 'order', orderDetails: { servico: 'Ajuste de vestido', valor: 10.00 } },
+            { id: 3, clienteId: 2, atelieId: 1, sender: 'cliente', text: 'Boa tarde, quanto fica para fazer a bainha de duas calças?', timestamp: '2025-06-28T14:00:00Z' },
         ];
 
         //======================================================================
         // COMPONENTES REACT
         //======================================================================
-
-        const { useState, useEffect } = React;
-
         const Modal = ({ isOpen, onClose, title, children }) => {
             if (!isOpen) return null;
             return (
@@ -93,25 +113,38 @@
                 </div>
             );
         };
+        
+        const Rating = ({ value }) => {
+            const fullStars = Math.floor(value);
+            const halfStar = value % 1 !== 0;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            return (
+                <div className="flex items-center">
+                    {[...Array(fullStars)].map((_, i) => <Star key={`full-${i}`} className="text-yellow-400 fill-current" size={20}/>)}
+                    {halfStar && <Star key="half" className="text-yellow-400 fill-current" size={20} style={{ clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)' }} />}
+                    {[...Array(emptyStars)].map((_, i) => <Star key={`empty-${i}`} className="text-gray-300 fill-current" size={20}/>)}
+                    <span className="ml-2 text-gray-600 font-semibold">{value}</span>
+                </div>
+            );
+        };
 
-        const LandingPage = ({ onNavigate, onViewAtelie }) => {
+        const LandingPage = ({ onNavigate, onViewAtelie, atelies }) => {
             const [searchTerm, setSearchTerm] = useState('');
             const [searchResults, setSearchResults] = useState([]);
-
             useEffect(() => {
                 if (searchTerm.trim() === '') {
                     setSearchResults([]);
                 } else {
-                    const results = mockAtelies.filter(atelie =>
+                    const results = atelies.filter(atelie =>
                         atelie.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
                         atelie.endereco.toLowerCase().includes(searchTerm.toLowerCase())
                     );
                     setSearchResults(results);
                 }
-            }, [searchTerm]);
+            }, [searchTerm, atelies]);
 
             return (
-                <div className="bg-gray-50 min-h-screen">
+                <div className="bg-gray-50 min-h-screen flex flex-col">
                     <header className="bg-white shadow-sm">
                         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                             <h1 className="text-2xl font-bold text-pink-600">AteliMatch</h1>
@@ -121,36 +154,34 @@
                             </div>
                         </nav>
                     </header>
-                    <main className="container mx-auto px-6 py-16 text-center">
-                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">Modernize a gestão do seu ateliê de costura.</h2>
-                        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Centralize pedidos, controle o estoque e comunique-se com seus clientes de forma fácil e eficiente.</p>
-                        <div className="mt-10 max-w-2xl mx-auto">
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    placeholder="Encontre um ateliê por nome ou localidade..."
-                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20}/>
-                            </div>
-                            {searchResults.length > 0 && (
-                                <div className="mt-4 bg-white rounded-lg shadow-lg text-left">
-                                    <ul className="divide-y divide-gray-200">
-                                        {searchResults.map(atelie => (
-                                            <li key={atelie.id} onClick={() => onViewAtelie(atelie)} className="p-4 hover:bg-pink-50 cursor-pointer">
-                                                <p className="font-bold text-pink-600">{atelie.nome}</p>
-                                                <p className="text-sm text-gray-600">{atelie.endereco}</p>
-                                                <p className="text-sm text-gray-500">{atelie.especialidade}</p>
-                                            </li>
-                                        ))}
-                                    </ul>
+                    
+                    <main className="flex-grow container mx-auto px-6">
+                        <div className="py-16 text-center">
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">Modernize a gestão do seu ateliê de costura.</h2>
+                            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Centralize pedidos, controle o estoque e comunique-se com seus clientes de forma fácil e eficiente.</p>
+                            <div className="mt-10 max-w-2xl mx-auto">
+                                <div className="relative">
+                                    <input type="text" placeholder="Encontre um ateliê por nome ou localidade..." className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20}/>
                                 </div>
-                            )}
+                                {searchResults.length > 0 && (
+                                    <div className="mt-4 bg-white rounded-lg shadow-lg text-left">
+                                        <ul className="divide-y divide-gray-200">
+                                            {searchResults.map(atelie => (
+                                                <li key={atelie.id} onClick={() => onViewAtelie(atelie)} className="p-4 hover:bg-pink-50 cursor-pointer">
+                                                    <p className="font-bold text-pink-600">{atelie.nome}</p>
+                                                    <p className="text-sm text-gray-600">{atelie.endereco}</p>
+                                                    <p className="text-sm text-gray-500">{atelie.especialidade}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </main>
-                    <footer className="bg-white mt-16">
+
+                    <footer className="bg-white">
                         <div className="container mx-auto px-6 py-8 text-center text-gray-600">
                             <p>&copy; {new Date().getFullYear()} AteliMatch. Todos os direitos reservados.</p>
                             <p className="text-sm mt-2">Um projeto da Universidade Federal de Santa Catarina.</p>
@@ -160,36 +191,45 @@
             );
         };
 
-        const AtelieDetailPage = ({ atelie, onNavigate }) => {
-            const Rating = ({ value }) => {
-                const fullStars = Math.floor(value);
-                const halfStar = value % 1 !== 0;
-                const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-                return (
-                    <div className="flex items-center">
-                        {[...Array(fullStars)].map((_, i) => <Star key={`full-${i}`} className="text-yellow-400 fill-current" size={20}/>)}
-                        {halfStar && <Star key="half" className="text-yellow-400 fill-current" size={20} style={{ clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)' }} />}
-                        {[...Array(emptyStars)].map((_, i) => <Star key={`empty-${i}`} className="text-gray-300 fill-current" size={20}/>)}
-                        <span className="ml-2 text-gray-600 font-semibold">{value}</span>
-                    </div>
-                );
+        const AtelieDetailPage = ({ atelie, onNavigate, clientView = false }) => {
+            const [isModalOpen, setIsModalOpen] = useState(false);
+
+            const handleRequestQuote = () => {
+                setIsModalOpen(true);
             };
+
+            const QuoteForm = ({onClose}) => (
+                <form onSubmit={(e) => {e.preventDefault(); onClose();}}>
+                     <div className="space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Descreva sua necessidade</label>
+                            <textarea name="servico" rows="4" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-purple-500 focus:border-purple-500" placeholder="Ex: Ajustar a barra de uma calça social..." required></textarea>
+                        </div>
+                        <div className="flex justify-end space-x-3 pt-2">
+                            <button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                            <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">Enviar Solicitação</button>
+                        </div>
+                    </div>
+                </form>
+            );
 
             return (
                 <div className="bg-gray-50 min-h-screen">
-                    <header className="bg-white shadow-sm">
-                        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                            <h1 className="text-2xl font-bold text-pink-600">AteliMatch</h1>
-                            <div>
-                                <button onClick={() => onNavigate('login')} className="text-gray-600 hover:text-pink-600 mr-4">Login</button>
-                                <button onClick={() => onNavigate('register')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar Ateliê</button>
-                            </div>
-                        </nav>
-                    </header>
+                    {!clientView && (
+                         <header className="bg-white shadow-sm">
+                            <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+                                <h1 className="text-2xl font-bold text-pink-600">AteliMatch</h1>
+                                <div>
+                                    <button onClick={() => onNavigate('login')} className="text-gray-600 hover:text-pink-600 mr-4">Login</button>
+                                    <button onClick={() => onNavigate('register')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar Ateliê</button>
+                                </div>
+                            </nav>
+                        </header>
+                    )}
                     <main className="container mx-auto px-6 py-10">
-                        <button onClick={() => onNavigate('landing')} className="flex items-center text-pink-600 hover:text-pink-800 font-semibold mb-6">
+                        <button onClick={() => onNavigate(clientView ? 'dashboardClient' : 'landing', {tab: 'busca'})} className="flex items-center text-purple-600 hover:text-purple-800 font-semibold mb-6">
                             <ArrowLeft size={20} className="mr-2" />
-                            Voltar à busca
+                            {clientView ? 'Voltar para a busca' : 'Voltar para a página inicial'}
                         </button>
                         <div className="bg-white p-8 rounded-lg shadow-lg">
                             <div className="flex flex-col md:flex-row gap-8">
@@ -197,23 +237,20 @@
                                     <h2 className="text-4xl font-bold text-gray-800">{atelie.nome}</h2>
                                     <p className="text-lg text-gray-600 mt-2">{atelie.especialidade}</p>
                                     <div className="mt-4"><Rating value={atelie.avaliacao} /></div>
+                                    <p className="mt-4 text-gray-700 leading-relaxed">{atelie.description}</p>
                                     <div className="mt-6 border-t pt-6 space-y-4">
-                                        <div className="flex items-center text-gray-700">
-                                            <MapPin size={20} className="mr-3 text-pink-500"/><span>{atelie.endereco}</span>
-                                        </div>
-                                        <div className="flex items-center text-gray-700">
-                                            <Phone size={20} className="mr-3 text-pink-500"/><span>{atelie.telefone}</span>
-                                        </div>
-                                        <div className="flex items-center text-gray-700">
-                                            <Mail size={20} className="mr-3 text-pink-500"/><span>{atelie.email}</span>
-                                        </div>
+                                        <div className="flex items-center text-gray-700"><MapPin size={20} className="mr-3 text-purple-500"/><span>{atelie.endereco}</span></div>
+                                        <div className="flex items-center text-gray-700"><Phone size={20} className="mr-3 text-purple-500"/><span>{atelie.telefone}</span></div>
+                                        <div className="flex items-center text-gray-700"><Mail size={20} className="mr-3 text-purple-500"/><span>{atelie.email}</span></div>
                                     </div>
                                 </div>
                                 <div className="md:w-1/3">
-                                    <div className="bg-pink-50 p-6 rounded-lg">
-                                        <h3 className="text-xl font-semibold text-pink-800 mb-4">Entre em Contacto</h3>
-                                        <p className="text-pink-700 mb-4">Gostou do que viu? Solicite um orçamento ou agende uma visita.</p>
-                                        <button onClick={() => onNavigate('login')} className="w-full bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Sou Cliente</button>
+                                    <div className="bg-purple-50 p-6 rounded-lg">
+                                        <h3 className="text-xl font-semibold text-purple-800 mb-4">Entre em Contato</h3>
+                                        <p className="text-purple-700 mb-4">Gostou do que viu? Solicite um orçamento ou agende uma visita.</p>
+                                        <button onClick={clientView ? handleRequestQuote : () => onNavigate('login')} className="w-full bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition">
+                                            {clientView ? 'Solicitar Orçamento' : 'Sou Cliente'}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -227,6 +264,9 @@
                             </div>
                         </div>
                     </main>
+                    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Solicitar Orçamento">
+                        <QuoteForm onClose={() => setIsModalOpen(false)} />
+                    </Modal>
                 </div>
             );
         };
@@ -257,36 +297,253 @@
             </div>
         );
 
-        const RegisterPage = ({ onNavigate }) => (
-            <div className="bg-gray-100 min-h-screen flex items-center justify-center py-12">
-                <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-                    <h1 className="text-3xl font-bold text-pink-600 text-center mb-6">AteliMatch</h1>
-                    <h2 className="text-xl font-semibold text-gray-700 text-center mb-8">Registe o seu Ateliê</h2>
-                    <form onSubmit={(e) => { e.preventDefault(); onNavigate('login'); }}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nome_atelie">Nome do Ateliê</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="nome_atelie" type="text" placeholder="Ex: Costuras da Ana" required/></div>
-                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="especialidade">Especialidade</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="especialidade" type="text" placeholder="Ex: Vestidos de Festa" required/></div>
-                        </div>
-                        <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="endereco">Endereço Completo</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="endereco" type="text" placeholder="Rua, Número, Bairro, Cidade, Estado" required/></div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telefone">Telefone</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="telefone" type="tel" placeholder="(48) 99999-9999" required/></div>
-                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email_reg">Email de Contato</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="email_reg" type="email" placeholder="contato@seuatelie.com" required/></div>
-                        </div>
-                        <div className="mb-6"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="senha_reg">Crie uma Senha</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="senha_reg" type="password" placeholder="********" required/></div>
-                        <div className="flex items-center justify-between"><button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition w-full" type="submit">Criar Conta</button></div>
-                        <p className="text-center mt-6 text-sm">Já tem uma conta? <a onClick={() => onNavigate('login')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">Faça login</a></p>
-                    </form>
-                </div>
-            </div>
-        );
+        const RegisterPage = ({ onNavigate, addAtelie }) => {
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const newAtelie = {
+                    id: Date.now(),
+                    nome: e.target.nome_atelie.value,
+                    especialidade: e.target.especialidade.value,
+                    endereco: e.target.endereco.value,
+                    telefone: e.target.telefone.value,
+                    email: e.target.email_reg.value,
+                    avaliacao: (Math.random() * (5 - 4) + 4).toFixed(1),
+                    description: "Bem-vindo ao nosso ateliê! Estamos ansiosos para criar algo especial para você.",
+                    images: ["https://placehold.co/600x400/cccccc/ffffff?text=Exemplo+1", "https://placehold.co/600x400/cccccc/ffffff?text=Exemplo+2", "https://placehold.co/600x400/cccccc/ffffff?text=Exemplo+3"]
+                };
+                addAtelie(newAtelie);
+                onNavigate('login');
+            };
 
-        const AtelieDashboard = ({ onLogout }) => {
+            return (
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center py-12">
+                    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+                        <h1 className="text-3xl font-bold text-pink-600 text-center mb-6">AteliMatch</h1>
+                        <h2 className="text-xl font-semibold text-gray-700 text-center mb-8">Registe o seu Ateliê</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nome_atelie">Nome do Ateliê</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="nome_atelie" type="text" placeholder="Ex: Costuras da Ana" required/></div>
+                                <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="especialidade">Especialidade</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="especialidade" type="text" placeholder="Ex: Vestidos de Festa" required/></div>
+                            </div>
+                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="endereco">Endereço Completo</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="endereco" type="text" placeholder="Rua, Número, Bairro, Cidade, Estado" required/></div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telefone">Telefone</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="telefone" type="tel" placeholder="(48) 99999-9999" required/></div>
+                                <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email_reg">Email de Contato</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="email_reg" type="email" placeholder="contato@seuatelie.com" required/></div>
+                            </div>
+                            <div className="mb-6"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="senha_reg">Crie uma Senha</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="senha_reg" type="password" placeholder="********" required/></div>
+                            <div className="flex items-center justify-between"><button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition w-full" type="submit">Criar Conta</button></div>
+                            <p className="text-center mt-6 text-sm">Já tem uma conta? <a onClick={() => onNavigate('login')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">Faça login</a></p>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+        
+        // ================== DASHBOARD COMPONENTS ==================
+        
+        const PedidosStatusChart = ({ pedidos }) => {
+            const data = [
+                { status: 'Concluído', value: pedidos.filter(p => p.status === 'Concluído').length, color: 'text-green-500', fill: '#10B981' },
+                { status: 'Em Progresso', value: pedidos.filter(p => p.status === 'Em Progresso').length, color: 'text-yellow-500', fill: '#F59E0B' },
+                { status: 'Aguardando Material', value: pedidos.filter(p => p.status === 'Aguardando Material').length, color: 'text-orange-500', fill: '#F97316' },
+                { status: 'Novo', value: pedidos.filter(p => p.status === 'Novo').length, color: 'text-blue-500', fill: '#3B82F6' },
+            ];
+            const total = data.reduce((acc, item) => acc + item.value, 0);
+            let accumulated = 0;
+            const chartData = data.map(item => {
+                const percentage = total > 0 ? (item.value / total) * 100 : 0;
+                const offset = accumulated;
+                accumulated += percentage;
+                return { ...item, percentage, offset };
+            });
+            const radius = 60;
+            const circumference = 2 * Math.PI * radius;
+            return (
+                <div className="bg-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-gray-800 mb-4">Pedidos por Status</h3>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <div className="relative w-48 h-48">
+                            <svg className="transform -rotate-90" width="100%" height="100%" viewBox="0 0 140 140">
+                                <circle className="text-gray-200" strokeWidth="20" stroke="currentColor" fill="transparent" r={radius} cx="70" cy="70" />
+                                {chartData.map((item) => (<circle key={item.status} className={item.color} strokeWidth="20" strokeDasharray={circumference} strokeDashoffset={circumference - (item.percentage / 100) * circumference} transform={`rotate(${(item.offset / 100) * 360} 70 70)`} stroke="currentColor" fill="transparent" r={radius} cx="70" cy="70"/>))}
+                            </svg>
+                            <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-gray-700">{total}<span className="text-sm font-medium ml-1">pedidos</span></span>
+                        </div>
+                        <ul className="flex flex-col justify-center space-y-2">
+                            {chartData.map(item => (<li key={item.status} className="flex items-center text-sm"><span className={`w-3 h-3 rounded-full mr-2`} style={{backgroundColor: item.fill}}></span><span className="text-gray-600">{item.status}:</span><span className="font-semibold text-gray-800 ml-1">{item.value}</span></li>))}
+                        </ul>
+                    </div>
+                </div>
+            );
+        };
+
+        const FaturamentoChart = ({ faturamento }) => {
+            const data = faturamento;
+            const maxValue = Math.max(...data.map(d => d.valor));
+            const chartHeight = 200;
+            const barWidth = 40;
+            const gap = 20;
+            return (
+                <div className="bg-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-gray-800 mb-4">Faturamento Mensal</h3>
+                    <div className="w-full overflow-x-auto">
+                         <svg width={data.length * (barWidth + gap) + 40} height={chartHeight + 40} className="font-sans">
+                             {[...Array(5)].map((_, i) => (<g key={i}><line x1="30" y1={(chartHeight / 4) * i + 10} x2={data.length * (barWidth + gap) + 30} y2={(chartHeight / 4) * i + 10} stroke="#e5e7eb" strokeWidth="1"/><text x="25" y={(chartHeight / 4) * i + 15} textAnchor="end" fontSize="10" fill="#6b7280">${Math.round(maxValue * (1 - i/4))}</text></g>))}
+                             {data.map((d, i) => {
+                                 const barHeight = maxValue > 0 ? (d.valor / maxValue) * chartHeight : 0;
+                                 return (<g key={d.mes}><rect x={i * (barWidth + gap) + 40} y={chartHeight - barHeight + 10} width={barWidth} height={barHeight} className="text-pink-500" fill="currentColor" rx="4"/><text x={i * (barWidth + gap) + barWidth/2 + 40} y={chartHeight + 30} textAnchor="middle" fontSize="12" fill="#374151">{d.mes}</text></g>);
+                             })}
+                        </svg>
+                    </div>
+                </div>
+            );
+        };
+
+        const NovosClientesChart = ({ novosClientes }) => {
+            const data = novosClientes;
+            const maxValue = Math.max(...data.map(d => d.quantidade));
+            const chartWidth = 280;
+            const chartHeight = 150;
+            const points = data.map((d, i) => `${(i / (data.length - 1)) * chartWidth},${chartHeight - (maxValue > 0 ? (d.quantidade / maxValue) * chartHeight : 0)}`).join(' ');
+            return (
+                 <div className="bg-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-gray-800 mb-4">Aquisição de Novos Clientes</h3>
+                    <div className="w-full" style={{height: `${chartHeight+40}px`}}>
+                        <svg width="100%" height="100%" viewBox={`0 0 ${chartWidth} ${chartHeight + 30}`}>
+                            <polyline fill="none" stroke="#8b5cf6" strokeWidth="2" points={points}/>
+                            {data.map((d,i) => {
+                                const x = (i / (data.length - 1)) * chartWidth;
+                                const y = chartHeight - (maxValue > 0 ? (d.quantidade / maxValue) * chartHeight : 0);
+                                return(<g key={d.mes}><circle cx={x} cy={y} r="4" fill="#8b5cf6" /><text x={x} y={chartHeight + 20} textAnchor="middle" fontSize="12" fill="#374151">{d.mes}</text></g>)
+                            })}
+                        </svg>
+                    </div>
+                </div>
+            )
+        }
+
+        const ItensGastosChart = ({ itens }) => {
+            const data = [...itens].sort((a,b) => b.quantidade - a.quantidade);
+            const maxValue = Math.max(...data.map(d => d.quantidade));
+            return (
+                 <div className="bg-white p-6 rounded-lg shadow">
+                    <h3 className="font-semibold text-gray-800 mb-4">Itens Mais Utilizados (Mês)</h3>
+                    <div className="space-y-4">
+                        {data.map(item => (
+                            <div key={item.item}>
+                                <div className="flex justify-between mb-1">
+                                    <span className="text-sm font-medium text-gray-700">{item.item}</span>
+                                    <span className="text-sm font-medium text-gray-500">{item.quantidade} un.</span>
+                                </div>
+                                <div className="w-full bg-gray-200 rounded-full h-2.5"><div className="bg-purple-600 h-2.5 rounded-full" style={{ width: `${maxValue > 0 ? (item.quantidade / maxValue) * 100 : 0}%` }}></div></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        const MeuAtelieTab = ({ atelie, updateAtelieDetails }) => {
+            const [formData, setFormData] = useState(atelie);
+            const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+            const [newPhotoUrl, setNewPhotoUrl] = useState('');
+
+            useEffect(() => {
+                setFormData(atelie);
+            }, [atelie]);
+
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({ ...prev, [name]: value }));
+            };
+
+            const handleSaveChanges = (e) => {
+                e.preventDefault();
+                updateAtelieDetails(formData);
+                alert('Alterações salvas com sucesso!');
+            };
+            
+            const handleAddPhoto = (e) => {
+                e.preventDefault();
+                if (newPhotoUrl.trim() === '') return;
+                const updatedImages = [...formData.images, newPhotoUrl];
+                const updatedData = { ...formData, images: updatedImages };
+                setFormData(updatedData);
+                updateAtelieDetails(updatedData);
+                setNewPhotoUrl('');
+                setIsPhotoModalOpen(false);
+            };
+
+            const handleRemovePhoto = (indexToRemove) => {
+                const updatedImages = formData.images.filter((_, index) => index !== indexToRemove);
+                const updatedData = { ...formData, images: updatedImages };
+                setFormData(updatedData);
+                updateAtelieDetails(updatedData);
+            };
+
+            return (
+                <div>
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">Meu Ateliê</h2>
+                    <form onSubmit={handleSaveChanges} className="bg-white p-8 rounded-lg shadow w-full space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label className="block text-sm font-medium text-gray-700">Nome do Ateliê</label><input type="text" name="nome" value={formData.nome} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Especialidade</label><input type="text" name="especialidade" value={formData.especialidade} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Endereço</label><input type="text" name="endereco" value={formData.endereco} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Telefone</label><input type="tel" name="telefone" value={formData.telefone} onChange={handleChange} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Descrição do Ateliê</label>
+                            <textarea name="description" value={formData.description} onChange={handleChange} rows="4" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500"></textarea>
+                        </div>
+                        
+                        <div className="border-t pt-6">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-medium text-gray-900">Galeria de Fotos</h3>
+                                <button type="button" onClick={() => setIsPhotoModalOpen(true)} className="flex items-center bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition"><Camera size={20} className="mr-2" />Adicionar Foto</button>
+                            </div>
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                {formData.images.map((img, index) => (
+                                    <div key={index} className="relative group">
+                                        <img src={img} alt={`Foto ${index + 1}`} className="w-full h-32 object-cover rounded-md" />
+                                        <button type="button" onClick={() => handleRemovePhoto(index)} className="absolute top-1 right-1 bg-black bg-opacity-50 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <X size={16} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mt-6"><button type="submit" className="bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700">Salvar Alterações</button></div>
+                    </form>
+                    <Modal isOpen={isPhotoModalOpen} onClose={() => setIsPhotoModalOpen(false)} title="Adicionar Nova Foto">
+                        <form onSubmit={handleAddPhoto}>
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700">URL da Imagem</label>
+                                    <input type="url" value={newPhotoUrl} onChange={(e) => setNewPhotoUrl(e.target.value)} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" placeholder="https://exemplo.com/imagem.jpg" required />
+                                </div>
+                                <div className="flex justify-end space-x-3 mt-6">
+                                    <button type="button" onClick={() => setIsPhotoModalOpen(false)} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                                    <button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">Adicionar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </Modal>
+                </div>
+            );
+        };
+
+        const AtelieDashboard = ({ onLogout, appData, updateAtelieDetails, addPedido, addEstoqueItem, updateEstoqueItem, deleteEstoqueItem, addMessage }) => {
+            const { pedidos, estoque, clientes, faturamento, novosClientes, itensGastos, atelies, messages } = appData;
+            const managedAtelie = atelies[0]; 
+
             const [activeTab, setActiveTab] = useState('painel');
             const [isMenuOpen, setIsMenuOpen] = useState(false);
-            const [isModalOpen, setIsModalOpen] = useState(false);
-            const [modalContent, setModalContent] = useState({ title: '', body: null });
+            const [modal, setModal] = useState({ isOpen: false, type: '', data: null });
 
-            const openModal = (title, content) => { setModalContent({ title, body: content }); setIsModalOpen(true); };
+            const openModal = (type, data = null) => setModal({ isOpen: true, type, data });
+            const closeModal = () => setModal({ isOpen: false, type: '', data: null });
+
             const StatusBadge = ({ status }) => {
                 let colorClasses = '';
                 switch (status) {
@@ -298,57 +555,609 @@
                 }
                 return <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${colorClasses}`}>{status}</span>;
             };
-            const NovoPedidoForm = ({ onClose }) => (
-                <form onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-                    <div className="space-y-4">
-                        <div><label className="block text-sm font-medium text-gray-700">Nome do Cliente</label><input type="text" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
-                        <div><label className="block text-sm font-medium text-gray-700">Descrição do Serviço</label><textarea rows="3" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required></textarea></div>
-                        <div><label className="block text-sm font-medium text-gray-700">Valor (R$)</label><input type="number" step="0.01" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
-                        <div className="flex justify-end space-x-3 mt-6"><button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button><button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">Adicionar Pedido</button></div>
+
+            const PedidoForm = ({ onClose, cliente }) => {
+                 const handlePedidoSubmit = (e) => {
+                    e.preventDefault();
+                    const newPedido = { 
+                        id: Date.now(), 
+                        clienteId: cliente.id, 
+                        servico: e.target.servico.value, 
+                        valor: parseFloat(e.target.valor.value), 
+                        pagamento: e.target.pagamento.value,
+                        dataEntrada: new Date().toISOString().slice(0, 10), 
+                        dataPrevista: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10), 
+                        status: 'Novo', 
+                        costureira: "Equipa" 
+                    };
+                    addPedido(newPedido);
+                    onClose();
+                };
+                return (
+                    <form onSubmit={handlePedidoSubmit}>
+                        <div className="space-y-4">
+                             <div>
+                                <label className="block text-sm font-medium text-gray-700">Cliente</label>
+                                <input type="text" value={cliente.nome} className="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm py-2 px-3" readOnly/>
+                            </div>
+                            <div><label className="block text-sm font-medium text-gray-700">Descrição do Serviço</label><textarea name="servico" rows="3" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required></textarea></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Valor ($)</label><input name="valor" type="number" step="0.01" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Forma de Pagamento</label>
+                                <select name="pagamento" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required>
+                                    <option>PIX</option>
+                                    <option>Cartão de Crédito</option>
+                                    <option>Cartão de Débito</option>
+                                    <option>Dinheiro</option>
+                                </select>
+                            </div>
+                            <div className="flex justify-end space-x-3 mt-6"><button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button><button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">Gerar Pedido</button></div>
+                        </div>
+                    </form>
+                );
+            };
+
+            const EstoqueForm = ({ onClose, item }) => {
+                const handleSubmit = (e) => {
+                    e.preventDefault();
+                    const newItem = {
+                        id: item ? item.id : Date.now(),
+                        item: e.target.item.value,
+                        quantidade: parseInt(e.target.quantidade.value, 10),
+                        nivelMinimo: parseInt(e.target.nivelMinimo.value, 10),
+                    };
+                    addEstoqueItem(newItem);
+                    onClose();
+                };
+                return (
+                    <form onSubmit={handleSubmit}>
+                        <div className="space-y-4">
+                            <div><label className="block text-sm font-medium text-gray-700">Nome do Item</label><input name="item" type="text" defaultValue={item?.item} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Quantidade Inicial</label><input name="quantidade" type="number" defaultValue={item?.quantidade || 0} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
+                            <div><label className="block text-sm font-medium text-gray-700">Nível Mínimo de Alerta</label><input name="nivelMinimo" type="number" defaultValue={item?.nivelMinimo || 10} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" required/></div>
+                            <div className="flex justify-end space-x-3 mt-6"><button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button><button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700">Salvar Item</button></div>
+                        </div>
+                    </form>
+                );
+            };
+
+            const UpdateEstoqueForm = ({ onClose, item, action }) => {
+                const [amount, setAmount] = useState(1);
+                const handleSubmit = (e) => {
+                    e.preventDefault();
+                    const change = action === 'add' ? amount : -amount;
+                    updateEstoqueItem(item.id, change);
+                    onClose();
+                };
+                 return (
+                    <form onSubmit={handleSubmit}>
+                        <div className="space-y-4">
+                            <h4 className="text-lg">Item: <span className="font-semibold">{item.item}</span></h4>
+                            <p>Quantidade Atual: {item.quantidade}</p>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Quantidade a {action === 'add' ? 'Adicionar' : 'Remover'}</label>
+                                <input 
+                                    type="number" 
+                                    value={amount}
+                                    onChange={(e) => setAmount(Math.max(1, parseInt(e.target.value, 10)))}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                                    min="1"
+                                />
+                            </div>
+                            <div className="flex justify-end space-x-3 mt-6">
+                                <button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                                <button type="submit" className={`px-4 py-2 rounded-md text-white ${action === 'add' ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`}>Confirmar</button>
+                            </div>
+                        </div>
+                    </form>
+                );
+            };
+
+            const MensagensTab = () => {
+                const [selectedClientId, setSelectedClientId] = useState(null);
+                const [messageText, setMessageText] = useState('');
+
+                const conversations = messages.reduce((acc, msg) => {
+                    (acc[msg.clienteId] = acc[msg.clienteId] || []).push(msg);
+                    return acc;
+                }, {});
+
+                const clientIds = Object.keys(conversations);
+                const selectedConversation = selectedClientId ? conversations[selectedClientId] : [];
+                const selectedClient = selectedClientId ? clientes.find(c => c.id === selectedClientId) : null;
+
+                const handleSendMessage = (e) => {
+                    e.preventDefault();
+                    if (messageText.trim() === '' || !selectedClientId) return;
+                    const newMessage = {
+                        id: Date.now(),
+                        clienteId: selectedClientId,
+                        atelieId: managedAtelie.id,
+                        sender: 'atelie',
+                        text: messageText,
+                        timestamp: new Date().toISOString()
+                    };
+                    addMessage(newMessage);
+                    setMessageText('');
+                };
+
+                return (
+                    <div className="h-full flex flex-col">
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Mensagens</h2>
+                        <div className="bg-white rounded-lg shadow flex-grow flex">
+                            <div className="w-1/3 border-r border-gray-200">
+                                <div className="p-4 border-b border-gray-200">
+                                    <h3 className="font-semibold">Conversas</h3>
+                                </div>
+                                <ul className="overflow-y-auto h-[calc(100%-61px)]">
+                                    {clientIds.map(clientId => {
+                                        const client = clientes.find(c => c.id === parseInt(clientId));
+                                        const lastMessage = conversations[clientId].slice(-1)[0];
+                                        return (
+                                            <li key={clientId} onClick={() => setSelectedClientId(parseInt(clientId))} className={`p-4 cursor-pointer hover:bg-pink-50 ${selectedClientId === parseInt(clientId) ? 'bg-pink-100' : ''}`}>
+                                                <p className="font-bold text-pink-700">{client?.nome || 'Cliente Desconhecido'}</p>
+                                                <p className="text-sm text-gray-500 truncate">{lastMessage.text}</p>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+                            <div className="w-2/3 flex flex-col">
+                                {selectedClientId ? (
+                                    <>
+                                        <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+                                            <h3 className="font-semibold">{selectedClient?.nome}</h3>
+                                            <button onClick={() => openModal('novoPedido', selectedClient)} className="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-pink-700">Gerar Pedido</button>
+                                        </div>
+                                        <div className="flex-grow p-6 overflow-y-auto space-y-4">
+                                            {selectedConversation.map(msg => (
+                                                <div key={msg.id} className={`flex ${msg.sender === 'atelie' ? 'justify-end' : 'justify-start'}`}>
+                                                    <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${msg.sender === 'atelie' ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
+                                                        {msg.text}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="p-4 border-t border-gray-200">
+                                            <form onSubmit={handleSendMessage} className="flex items-center space-x-3">
+                                                <input type="text" value={messageText} onChange={e => setMessageText(e.target.value)} placeholder="Digite sua mensagem..." className="flex-grow border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+                                                <button type="submit" className="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 flex-shrink-0"><Send size={20} /></button>
+                                            </form>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="flex-grow flex items-center justify-center text-gray-500">
+                                        <p>Selecione uma conversa para começar.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                </form>
-            );
+                )
+            };
+
             const tabs = {
-                painel: (<div><h2 className="text-2xl font-semibold text-gray-800 mb-6">Painel Geral</h2><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"><div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Pedidos Ativos</h3><p className="text-3xl font-bold text-pink-600 mt-2">{mockPedidos.filter(p => p.status !== 'Concluído').length}</p></div><div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Faturamento (Mês)</h3><p className="text-3xl font-bold text-pink-600 mt-2">R$ {mockPedidos.filter(p => p.status === 'Concluído').reduce((acc, p) => acc + p.valor, 0).toFixed(2)}</p></div><div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Itens em Baixo Estoque</h3><p className="text-3xl font-bold text-red-500 mt-2">{mockEstoque.filter(item => item.quantidade <= item.nivelMinimo).length}</p></div><div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Total de Clientes</h3><p className="text-3xl font-bold text-pink-600 mt-2">{mockClientes.length}</p></div></div></div>),
-                pedidos: (<div><div className="flex justify-between items-center mb-6"><h2 className="text-2xl font-semibold text-gray-800">Gestão de Pedidos</h2><button onClick={() => openModal('Adicionar Novo Pedido', <NovoPedidoForm onClose={() => setIsModalOpen(false)} />)} className="flex items-center bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition"><PlusCircle size={20} className="mr-2" />Novo Pedido</button></div><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Costureira</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{mockPedidos.map(pedido => (<tr key={pedido.id}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{pedido.cliente}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.servico}</td><td className="px-6 py-4 whitespace-nowrap text-sm"><StatusBadge status={pedido.status} /></td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">R$ {pedido.valor.toFixed(2)}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.costureira}</td></tr>))}</tbody></table></div></div>),
-                estoque: (<div><h2 className="text-2xl font-semibold text-gray-800 mb-6">Controle de Estoque</h2><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantidade Atual</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nível Mínimo</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{mockEstoque.map(item => (<tr key={item.id} className={item.quantidade <= item.nivelMinimo ? 'bg-red-50' : ''}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.item}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantidade}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.nivelMinimo}</td><td className="px-6 py-4 whitespace-nowrap text-sm">{item.quantidade <= item.nivelMinimo ? <span className="flex items-center text-red-600"><AlertCircle size={16} className="mr-1"/>Baixo</span> : <span className="text-green-600">OK</span>}</td></tr>))}</tbody></table></div></div>),
-                clientes: (<div><h2 className="text-2xl font-semibold text-gray-800 mb-6">Clientes</h2><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente Desde</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{mockClientes.map(cliente => (<tr key={cliente.id}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{cliente.nome}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.telefone}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.email}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.desde}</td></tr>))}</tbody></table></div></div>),
-                'meu-atelie': (<div><h2 className="text-2xl font-semibold text-gray-800 mb-6">Meu Ateliê</h2><div className="bg-white p-8 rounded-lg shadow w-full"><form><div className="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label className="block text-sm font-medium text-gray-700">Nome do Ateliê</label><input type="text" defaultValue="Costuras da Ana" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div><div><label className="block text-sm font-medium text-gray-700">Especialidade</label><input type="text" defaultValue="Ajustes e Reparos" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div><div><label className="block text-sm font-medium text-gray-700">Endereço</label><input type="text" defaultValue="Rua das Flores, 123, Araranguá, SC" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div><div><label className="block text-sm font-medium text-gray-700">Telefone</label><input type="tel" defaultValue="(48) 99988-7766" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500" /></div></div><div className="mt-6"><button type="submit" className="bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700">Salvar Alterações</button></div></form></div></div>)
+                painel: (
+                    <div>
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Painel Geral</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Pedidos Ativos</h3><p className="text-3xl font-bold text-pink-600 mt-2">{pedidos.filter(p => p.status !== 'Concluído').length}</p></div>
+                            <div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Faturamento (Mês)</h3><p className="text-3xl font-bold text-pink-600 mt-2">$ {faturamento.find(f => f.mes === 'Jun/25')?.valor.toFixed(2) || '0.00'}</p></div>
+                            <div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Itens em Baixo Estoque</h3><p className="text-3xl font-bold text-red-500 mt-2">{estoque.filter(item => item.quantidade <= item.nivelMinimo).length}</p></div>
+                            <div className="bg-white p-6 rounded-lg shadow"><h3 className="text-gray-500 font-medium">Total de Clientes</h3><p className="text-3xl font-bold text-pink-600 mt-2">{clientes.length}</p></div>
+                        </div>
+                        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8"><PedidosStatusChart pedidos={pedidos} /><FaturamentoChart faturamento={faturamento} /></div>
+                        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8"><NovosClientesChart novosClientes={novosClientes} /><ItensGastosChart itens={itensGastos} /></div>
+                    </div>
+                ),
+                pedidos: (<div><div className="flex justify-between items-center mb-6"><h2 className="text-2xl font-semibold text-gray-800">Gestão de Pedidos</h2></div><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pagamento</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{pedidos.map(pedido => (<tr key={pedido.id}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{clientes.find(c => c.id === pedido.clienteId)?.nome || 'N/A'}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.servico}</td><td className="px-6 py-4 whitespace-nowrap text-sm"><StatusBadge status={pedido.status} /></td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$ {pedido.valor.toFixed(2)}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.pagamento}</td></tr>))}</tbody></table></div></div>),
+                estoque: (<div><div className="flex justify-between items-center mb-6"><h2 className="text-2xl font-semibold text-gray-800">Controle de Estoque</h2><button onClick={() => openModal('novoEstoqueItem')} className="flex items-center bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition"><PlusCircle size={20} className="mr-2" />Novo Item</button></div><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantidade Atual</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nível Mínimo</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{estoque.map(item => (<tr key={item.id} className={item.quantidade <= item.nivelMinimo ? 'bg-red-50' : ''}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.item}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.quantidade}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.nivelMinimo}</td><td className="px-6 py-4 whitespace-nowrap text-sm">{item.quantidade <= item.nivelMinimo ? <span className="flex items-center text-red-600"><AlertCircle size={16} className="mr-1"/>Baixo</span> : <span className="text-green-600">OK</span>}</td><td className="px-6 py-4 whitespace-nowrap text-sm font-medium"><div className="flex items-center space-x-2"><button onClick={() => openModal('addEstoque', item)} className="p-1 text-green-600 hover:bg-green-100 rounded-full"><Plus size={18}/></button><button onClick={() => openModal('removeEstoque', item)} className="p-1 text-yellow-600 hover:bg-yellow-100 rounded-full"><Minus size={18}/></button><button onClick={() => deleteEstoqueItem(item.id)} className="p-1 text-red-600 hover:bg-red-100 rounded-full"><Trash2 size={18}/></button></div></td></tr>))}</tbody></table></div></div>),
+                mensagens: <MensagensTab />,
+                clientes: (<div><h2 className="text-2xl font-semibold text-gray-800 mb-6">Clientes</h2><div className="bg-white rounded-lg shadow overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente Desde</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{clientes.map(cliente => (<tr key={cliente.id}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{cliente.nome}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.telefone}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.email}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{cliente.desde}</td></tr>))}</tbody></table></div></div>),
+                'meu-atelie': <MeuAtelieTab atelie={managedAtelie} updateAtelieDetails={updateAtelieDetails} />
             };
             const NavItem = ({ icon: Icon, label, tabName }) => (<li className="mb-2"><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab(tabName); isMenuOpen && setIsMenuOpen(false); }} className={`flex items-center p-3 rounded-lg transition-colors ${activeTab === tabName ? 'bg-pink-600 text-white' : 'text-gray-600 hover:bg-pink-100 hover:text-pink-700'}`}><Icon size={20} className="mr-3" /><span className="font-medium">{label}</span></a></li>);
-            const SidebarContent = () => (<React.Fragment><div className="p-6"><h1 className="text-3xl font-bold text-pink-600">AteliMatch</h1></div><nav className="px-4"><ul><NavItem icon={Home} label="Painel" tabName="painel" /><NavItem icon={ShoppingBag} label="Pedidos" tabName="pedidos" /><NavItem icon={Archive} label="Estoque" tabName="estoque" /><NavItem icon={Users} label="Clientes" tabName="clientes" /><NavItem icon={Settings} label="Meu Ateliê" tabName="meu-atelie" /></ul></nav><div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200"><a href="#" onClick={onLogout} className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-200"><LogOut size={20} className="mr-3" /><span className="font-medium">Sair</span></a></div></React.Fragment>);
-            return (<div className="flex min-h-screen bg-gray-100"><aside className="hidden lg:block w-64 bg-white border-r border-gray-200 flex-shrink-0 relative"><SidebarContent /></aside>{isMenuOpen && (<div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMenuOpen(false)}></div>)}<aside className={`lg:hidden fixed top-0 left-0 h-full w-64 bg-white z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}><SidebarContent /></aside><main className="flex-1 p-6 lg:p-10"><div className="lg:hidden flex justify-between items-center mb-6"><button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600">{isMenuOpen ? <X size={24} /> : <MenuIcon/>}</button><h1 className="text-xl font-bold text-pink-600">AteliMatch</h1><div></div></div>{tabs[activeTab]}</main><Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={modalContent.title}>{modalContent.body}</Modal></div>);
+            const SidebarContent = () => (<React.Fragment><div className="p-6"><h1 className="text-3xl font-bold text-pink-600">AteliMatch</h1></div><nav className="px-4"><ul><NavItem icon={Home} label="Painel" tabName="painel" /><NavItem icon={ShoppingBag} label="Pedidos" tabName="pedidos" /><NavItem icon={MessageSquare} label="Mensagens" tabName="mensagens" /><NavItem icon={Archive} label="Estoque" tabName="estoque" /><NavItem icon={Users} label="Clientes" tabName="clientes" /><NavItem icon={Settings} label="Meu Ateliê" tabName="meu-atelie" /></ul></nav><div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200"><a href="#" onClick={onLogout} className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-200"><LogOut size={20} className="mr-3" /><span className="font-medium">Sair</span></a></div></React.Fragment>);
+            
+            const renderModalContent = () => {
+                switch(modal.type) {
+                    case 'novoPedido':
+                        return <Modal isOpen={modal.isOpen} onClose={closeModal} title="Gerar Novo Pedido"><PedidoForm onClose={closeModal} cliente={modal.data} /></Modal>;
+                    case 'novoEstoqueItem':
+                         return <Modal isOpen={modal.isOpen} onClose={closeModal} title="Adicionar Novo Item ao Estoque"><EstoqueForm onClose={closeModal} /></Modal>;
+                    case 'addEstoque':
+                        return <Modal isOpen={modal.isOpen} onClose={closeModal} title="Adicionar Quantidade"><UpdateEstoqueForm onClose={closeModal} item={modal.data} action="add" /></Modal>;
+                    case 'removeEstoque':
+                        return <Modal isOpen={modal.isOpen} onClose={closeModal} title="Remover Quantidade"><UpdateEstoqueForm onClose={closeModal} item={modal.data} action="remove" /></Modal>;
+                    default:
+                        return null;
+                }
+            };
+
+            return (<div className="flex min-h-screen bg-gray-100"><aside className="hidden lg:block w-64 bg-white border-r border-gray-200 flex-shrink-0 relative"><SidebarContent /></aside>{isMenuOpen && (<div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMenuOpen(false)}></div>)}<aside className={`lg:hidden fixed top-0 left-0 h-full w-64 bg-white z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}><SidebarContent /></aside><main className="flex-1 p-6 lg:p-10 flex flex-col"><div className="lg:hidden flex justify-between items-center mb-6 flex-shrink-0"><button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600">{isMenuOpen ? <X size={24} /> : <MenuIcon/>}</button><h1 className="text-xl font-bold text-pink-600">AteliMatch</h1><div></div></div><div className="flex-grow">{tabs[activeTab]}</div></main>{renderModalContent()}</div>);
         };
 
-        const ClientDashboard = ({ onLogout }) => {
+        const FindAteliePage = ({ atelies, onViewAtelie }) => {
+            const [searchTerm, setSearchTerm] = useState('');
+            const filteredAtelies = atelies.filter(atelie =>
+                atelie.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                atelie.especialidade.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                atelie.endereco.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
             return (
-                <div className="bg-gray-100 min-h-screen">
-                    <header className="bg-white shadow-sm"><div className="container mx-auto px-6 py-4 flex justify-between items-center"><h1 className="text-2xl font-bold text-purple-600">AteliMatch</h1><button onClick={onLogout} className="flex items-center text-gray-600 hover:text-purple-600"><LogOut size={20} className="mr-2"/>Sair</button></div></header>
-                    <main className="container mx-auto px-6 py-10">
-                        <h2 className="text-3xl font-bold text-gray-800 mb-8">Bem-vinda, Maria Silva!</h2>
-                        <div className="bg-white p-8 rounded-lg shadow"><h3 className="text-xl font-semibold text-gray-700 mb-6">Meus Pedidos Recentes</h3><div className="overflow-x-auto"><table className="min-w-full divide-y divide-gray-200"><thead className="bg-gray-50"><tr><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ateliê</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th><th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Previsão de Entrega</th></tr></thead><tbody className="bg-white divide-y divide-gray-200">{mockPedidos.filter(p => p.cliente === "Maria Silva").map(pedido => (<tr key={pedido.id}><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{pedido.servico}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Costuras da Ana</td><td className="px-6 py-4 whitespace-nowrap text-sm">{pedido.status}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.dataPrevista}</td></tr>))}</tbody></table></div></div>
-                    </main>
+                <div>
+                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Encontre o Ateliê Perfeito</h2>
+                    <p className="text-gray-600 mb-6">Busque por nome, especialidade ou localidade para encontrar o serviço que precisa.</p>
+                    
+                    <div className="relative mb-8">
+                        <input 
+                            type="text" 
+                            placeholder="Buscar ateliês..." 
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20}/>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {filteredAtelies.map(atelie => (
+                            <div key={atelie.id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                                <img src={atelie.images[0]} alt={`Foto de ${atelie.nome}`} className="w-full h-40 object-cover rounded-t-lg" />
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-xl font-bold text-purple-700">{atelie.nome}</h3>
+                                    <p className="text-sm text-gray-500 mb-3">{atelie.especialidade}</p>
+                                    <div className="mb-4"><Rating value={atelie.avaliacao} /></div>
+                                    <div className="flex items-center text-sm text-gray-600 mb-4">
+                                        <MapPin size={16} className="mr-2 text-gray-400 flex-shrink-0" />
+                                        <span>{atelie.endereco}</span>
+                                    </div>
+                                    <div className="mt-auto">
+                                        <button 
+                                            onClick={() => onViewAtelie(atelie)} 
+                                            className="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                                        >
+                                            Ver Perfil
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             );
         };
 
+        const ClientDashboard = ({ onLogout, appData, onViewAtelie, setActiveTab, activeTab, addMessage, addPagamento }) => {
+            const { pedidos, pagamentos, atelies, clientes, messages } = appData;
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [modal, setModal] = useState({ isOpen: false, type: '', data: null });
+
+            const openModal = (type, data = null) => setModal({ isOpen: true, type, data });
+            const closeModal = () => setModal({ isOpen: false, type: '', data: null });
+
+            // Dados do cliente logado (simulado)
+            const loggedInClientId = 1; // Maria Silva
+            const clientPedidos = pedidos.filter(p => p.clienteId === loggedInClientId);
+            
+            const StatusBadge = ({ status }) => {
+                let colorClasses = '';
+                switch (status) {
+                    case 'Novo': colorClasses = 'bg-blue-100 text-blue-800'; break;
+                    case 'Em Progresso': colorClasses = 'bg-yellow-100 text-yellow-800'; break;
+                    case 'Aguardando Material': colorClasses = 'bg-orange-100 text-orange-800'; break;
+                    case 'Concluído': colorClasses = 'bg-green-100 text-green-800'; break;
+                    default: colorClasses = 'bg-gray-100 text-gray-800';
+                }
+                return <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${colorClasses}`}>{status}</span>;
+            };
+
+            const PaymentForm = ({ onClose, orderDetails }) => {
+                const handlePayment = (e) => {
+                    e.preventDefault();
+                    addPagamento({
+                        id: Date.now(),
+                        data: new Date().toISOString().slice(0, 10),
+                        pedidoId: orderDetails.id,
+                        valor: orderDetails.valor,
+                        metodo: e.target.metodo.value
+                    });
+                    alert('Pagamento realizado com sucesso!');
+                    onClose();
+                };
+
+                return (
+                     <form onSubmit={handlePayment}>
+                        <div className="space-y-4">
+                            <p><strong>Serviço:</strong> {orderDetails.servico}</p>
+                            <p><strong>Valor:</strong> $ {orderDetails.valor.toFixed(2)}</p>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Forma de Pagamento</label>
+                                <select name="metodo" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-purple-500 focus:border-purple-500" required>
+                                    <option>Cartão de Crédito</option>
+                                    <option>PIX</option>
+                                </select>
+                            </div>
+                             <div className="flex justify-end space-x-3 mt-6">
+                                <button type="button" onClick={onClose} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                                <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">Pagar</button>
+                            </div>
+                        </div>
+                    </form>
+                );
+            };
+            
+            const ClientMessagesTab = () => {
+                const [selectedAtelieId, setSelectedAtelieId] = useState(null);
+                const [messageText, setMessageText] = useState('');
+
+                const conversations = messages.reduce((acc, msg) => {
+                    if (msg.clienteId !== loggedInClientId) return acc;
+                    (acc[msg.atelieId] = acc[msg.atelieId] || []).push(msg);
+                    return acc;
+                }, {});
+
+                const atelieIds = Object.keys(conversations);
+                const selectedConversation = selectedAtelieId ? conversations[selectedAtelieId] : [];
+                const selectedAtelie = selectedAtelieId ? atelies.find(a => a.id === selectedAtelieId) : null;
+
+                const handleSendMessage = (e) => {
+                    e.preventDefault();
+                    if (messageText.trim() === '' || !selectedAtelieId) return;
+                    addMessage({
+                        id: Date.now(),
+                        clienteId: loggedInClientId,
+                        atelieId: selectedAtelieId,
+                        sender: 'cliente',
+                        text: messageText,
+                        timestamp: new Date().toISOString()
+                    });
+                    setMessageText('');
+                };
+
+                return (
+                    <div className="h-full flex flex-col">
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Minhas Conversas</h2>
+                        <div className="bg-white rounded-lg shadow flex-grow flex">
+                            <div className="w-1/3 border-r border-gray-200">
+                                <div className="p-4 border-b border-gray-200"><h3 className="font-semibold">Ateliês</h3></div>
+                                <ul className="overflow-y-auto h-[calc(100%-61px)]">
+                                    {atelieIds.map(atelieId => {
+                                        const atelie = atelies.find(a => a.id === parseInt(atelieId));
+                                        const lastMessage = conversations[atelieId].slice(-1)[0];
+                                        return (
+                                            <li key={atelieId} onClick={() => setSelectedAtelieId(parseInt(atelieId))} className={`p-4 cursor-pointer hover:bg-purple-50 ${selectedAtelieId === parseInt(atelieId) ? 'bg-purple-100' : ''}`}>
+                                                <p className="font-bold text-purple-700">{atelie?.nome || 'Ateliê Desconhecido'}</p>
+                                                <p className="text-sm text-gray-500 truncate">{lastMessage.text}</p>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+                            <div className="w-2/3 flex flex-col">
+                                {selectedAtelieId ? (
+                                    <>
+                                        <div className="p-4 border-b border-gray-200"><h3 className="font-semibold">{selectedAtelie?.nome}</h3></div>
+                                        <div className="flex-grow p-6 overflow-y-auto space-y-4">
+                                            {selectedConversation.map(msg => (
+                                                <div key={msg.id} className={`flex flex-col ${msg.sender === 'cliente' ? 'items-end' : 'items-start'}`}>
+                                                    <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${msg.sender === 'cliente' ? 'bg-purple-500 text-white' : 'bg-gray-200 text-gray-800'}`}>
+                                                        <p>{msg.text}</p>
+                                                        {msg.type === 'order' && msg.sender === 'atelie' && (
+                                                            <button onClick={() => openModal('pagamento', { ...msg.orderDetails, id: msg.id })} className="mt-2 bg-white text-purple-600 font-semibold px-3 py-1 rounded-full text-sm">Pagar Agora</button>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="p-4 border-t border-gray-200">
+                                            <form onSubmit={handleSendMessage} className="flex items-center space-x-3">
+                                                <input type="text" value={messageText} onChange={e => setMessageText(e.target.value)} placeholder="Digite sua mensagem..." className="flex-grow border border-gray-300 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                                                <button type="submit" className="bg-purple-600 text-white p-3 rounded-full hover:bg-purple-700 flex-shrink-0"><Send size={20} /></button>
+                                            </form>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="flex-grow flex items-center justify-center text-gray-500"><p>Selecione uma conversa para começar.</p></div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                )
+            };
+
+            const tabs = {
+                pedidos: (
+                     <div>
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Meus Pedidos</h2>
+                        <div className="bg-white rounded-lg shadow overflow-x-auto">
+                            <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-50">
+                                    <tr>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ateliê</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Previsão</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                    {clientPedidos.map(pedido => {
+                                        const atelieInfo = atelies.find(a => a.id === pedido.atelieId);
+                                        return (
+                                            <tr key={pedido.id}>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{atelieInfo?.nome || 'N/A'}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.servico}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm"><StatusBadge status={pedido.status} /></td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pedido.dataPrevista}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$ {pedido.valor.toFixed(2)}</td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                ),
+                mensagens: <ClientMessagesTab />,
+                busca: ( <FindAteliePage atelies={atelies} onViewAtelie={onViewAtelie} /> ),
+                perfil: (
+                    <div>
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Meu Perfil</h2>
+                        <div className="bg-white p-8 rounded-lg shadow w-full max-w-lg mx-auto">
+                            <form>
+                                <div className="space-y-4">
+                                    <div><label className="block text-sm font-medium text-gray-700">Nome</label><input type="text" defaultValue="Maria Silva" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"/></div>
+                                    <div><label className="block text-sm font-medium text-gray-700">Email</label><input type="email" defaultValue="maria.s@email.com" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"/></div>
+                                    <div><label className="block text-sm font-medium text-gray-700">Telefone</label><input type="tel" defaultValue="(48) 91122-3344" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"/></div>
+                                    <div className="pt-2"><button type="submit" className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">Salvar Alterações</button></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                ),
+                pagamentos: (
+                     <div>
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Histórico de Pagamentos</h2>
+                        <div className="bg-white rounded-lg shadow overflow-x-auto">
+                            <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-50">
+                                    <tr>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Referência (Pedido)</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Método</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                    {pagamentos.map(pag => (<tr key={pag.id}><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pag.data}</td><td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pedido #{pag.pedidoId}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$ {pag.valor.toFixed(2)}</td><td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pag.metodo}</td></tr>))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                )
+            };
+            const NavItem = ({ icon: Icon, label, tabName }) => (<li className="mb-2"><a href="#" onClick={(e) => { e.preventDefault(); setActiveTab(tabName); isMenuOpen && setIsMenuOpen(false); }} className={`flex items-center p-3 rounded-lg transition-colors ${activeTab === tabName ? 'bg-purple-600 text-white' : 'text-gray-600 hover:bg-purple-100 hover:text-purple-700'}`}><Icon size={20} className="mr-3" /><span className="font-medium">{label}</span></a></li>);
+            const SidebarContent = () => (<React.Fragment><div className="p-6"><h1 className="text-3xl font-bold text-purple-600">AteliMatch</h1><p className="text-sm text-gray-500 mt-1">Portal do Cliente</p></div><nav className="px-4"><ul><NavItem icon={ShoppingBag} label="Meus Pedidos" tabName="pedidos" /><NavItem icon={MessageSquare} label="Mensagens" tabName="mensagens" /><NavItem icon={Search} label="Encontrar Ateliês" tabName="busca" /><NavItem icon={User} label="Meu Perfil" tabName="perfil" /><NavItem icon={CreditCard} label="Pagamentos" tabName="pagamentos"/></ul></nav><div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200"><a href="#" onClick={onLogout} className="flex items-center p-3 rounded-lg text-gray-600 hover:bg-gray-200"><LogOut size={20} className="mr-3" /><span className="font-medium">Sair</span></a></div></React.Fragment>);
+
+            const renderModalContent = () => {
+                switch(modal.type) {
+                    case 'pagamento':
+                        return <Modal isOpen={modal.isOpen} onClose={closeModal} title="Realizar Pagamento"><PaymentForm onClose={closeModal} orderDetails={modal.data} /></Modal>;
+                    default:
+                        return null;
+                }
+            };
+
+            return (<div className="flex min-h-screen bg-gray-100"><aside className="hidden lg:block w-64 bg-white border-r border-gray-200 flex-shrink-0 relative"><SidebarContent /></aside>{isMenuOpen && (<div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40" onClick={() => setIsMenuOpen(false)}></div>)}<aside className={`lg:hidden fixed top-0 left-0 h-full w-64 bg-white z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}><SidebarContent /></aside><main className="flex-1 p-6 lg:p-10 flex flex-col"><div className="lg:hidden flex justify-between items-center mb-6 flex-shrink-0"><button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600">{isMenuOpen ? <X size={24} /> : <MenuIcon/>}</button><h1 className="text-xl font-bold text-purple-600">Portal do Cliente</h1><div></div></div><div className="flex-grow">{tabs[activeTab]}</div></main>{renderModalContent()}</div>);
+        };
+
+
         function App() {
+            const [atelies, setAtelies] = useState(() => getInitialData('atelies', initialMockAtelies));
+            const [pedidos, setPedidos] = useState(() => getInitialData('pedidos', initialMockPedidos));
+            const [estoque, setEstoque] = useState(() => getInitialData('estoque', initialMockEstoque));
+            const [clientes, setClientes] = useState(() => getInitialData('clientes', initialMockClientes));
+            const [faturamento, setFaturamento] = useState(() => getInitialData('faturamento', initialMockFaturamento));
+            const [novosClientes, setNovosClientes] = useState(() => getInitialData('novosClientes', initialMockNovosClientes));
+            const [itensGastos, setItensGastos] = useState(() => getInitialData('itensGastos', initialMockItensGastos));
+            const [pagamentos, setPagamentos] = useState(() => getInitialData('pagamentos', initialMockPagamentos));
+            const [messages, setMessages] = useState(() => getInitialData('messages', initialMockMessages));
+            
             const [currentPage, setCurrentPage] = useState('landing');
             const [userType, setUserType] = useState(null);
             const [selectedAtelie, setSelectedAtelie] = useState(null);
-            const handleNavigate = (page) => { setCurrentPage(page); };
-            const handleLogin = (type) => { setUserType(type); setCurrentPage(type === 'atelie' ? 'dashboardAtelie' : 'dashboardClient'); };
+            const [clientDashboardTab, setClientDashboardTab] = useState('pedidos');
+
+            const updateLocalStorage = (key, data) => {
+                localStorage.setItem(key, JSON.stringify(data));
+            };
+
+            const addAtelie = (newAtelie) => {
+                const updatedAtelies = [...atelies, newAtelie];
+                setAtelies(updatedAtelies);
+                updateLocalStorage('atelies', updatedAtelies);
+            };
+            
+            const addPedido = (newPedido) => {
+                const updatedPedidos = [...pedidos, newPedido];
+                setPedidos(updatedPedidos);
+                updateLocalStorage('pedidos', updatedPedidos);
+            };
+
+            const addMessage = (newMessage) => {
+                const updatedMessages = [...messages, newMessage];
+                setMessages(updatedMessages);
+                updateLocalStorage('messages', updatedMessages);
+            };
+
+             const addPagamento = (newPagamento) => {
+                const updatedPagamentos = [...pagamentos, newPagamento];
+                setPagamentos(updatedPagamentos);
+                updateLocalStorage('pagamentos', updatedPagamentos);
+            };
+
+            const addEstoqueItem = (newItem) => {
+                const existingIndex = estoque.findIndex(i => i.id === newItem.id);
+                let updatedEstoque;
+                if (existingIndex > -1) {
+                    updatedEstoque = estoque.map(i => i.id === newItem.id ? newItem : i);
+                } else {
+                    updatedEstoque = [...estoque, newItem];
+                }
+                setEstoque(updatedEstoque);
+                updateLocalStorage('estoque', updatedEstoque);
+            };
+
+            const updateEstoqueItem = (itemId, amount) => {
+                const updatedEstoque = estoque.map(item => 
+                    item.id === itemId ? { ...item, quantidade: Math.max(0, item.quantidade + amount) } : item
+                );
+                setEstoque(updatedEstoque);
+                updateLocalStorage('estoque', updatedEstoque);
+            };
+
+            const deleteEstoqueItem = (itemId) => {
+                const updatedEstoque = estoque.filter(item => item.id !== itemId);
+                setEstoque(updatedEstoque);
+                updateLocalStorage('estoque', updatedEstoque);
+            };
+
+            const updateAtelieDetails = (updatedDetails) => {
+                const updatedAtelies = atelies.map(a => a.id === updatedDetails.id ? updatedDetails : a);
+                setAtelies(updatedAtelies);
+                updateLocalStorage('atelies', updatedAtelies);
+            };
+
+            const appData = { atelies, pedidos, estoque, clientes, faturamento, novosClientes, itensGastos, pagamentos, messages };
+
+            const handleNavigate = (page, options = {}) => {
+                if(page === 'dashboardClient' && options.tab) {
+                    setClientDashboardTab(options.tab);
+                }
+                setCurrentPage(page); 
+            };
+            const handleLogin = (type) => { 
+                setUserType(type); 
+                setCurrentPage(type === 'atelie' ? 'dashboardAtelie' : 'dashboardClient'); 
+                setClientDashboardTab('pedidos');
+            };
             const handleLogout = () => { setUserType(null); setCurrentPage('landing'); };
-            const handleViewAtelie = (atelie) => { setSelectedAtelie(atelie); setCurrentPage('atelieDetail'); }
+            const handleViewAtelie = (atelie) => { 
+                setSelectedAtelie(atelie); 
+                setCurrentPage(userType === 'cliente' ? 'atelieDetailClient' : 'atelieDetail'); 
+            }
 
             switch (currentPage) {
                 case 'login': return <LoginPage onNavigate={handleNavigate} onLogin={handleLogin} />;
-                case 'register': return <RegisterPage onNavigate={handleNavigate} />;
-                case 'dashboardAtelie': return <AtelieDashboard onLogout={handleLogout} />;
-                case 'dashboardClient': return <ClientDashboard onLogout={handleLogout} />;
+                case 'register': return <RegisterPage onNavigate={handleNavigate} addAtelie={addAtelie} />;
+                case 'dashboardAtelie': return <AtelieDashboard onLogout={handleLogout} appData={appData} addPedido={addPedido} addEstoqueItem={addEstoqueItem} updateEstoqueItem={updateEstoqueItem} deleteEstoqueItem={deleteEstoqueItem} updateAtelieDetails={updateAtelieDetails} addMessage={addMessage} />;
+                case 'dashboardClient': return <ClientDashboard onLogout={handleLogout} appData={appData} onViewAtelie={handleViewAtelie} activeTab={clientDashboardTab} setActiveTab={setClientDashboardTab} addMessage={addMessage} addPagamento={addPagamento} />;
                 case 'atelieDetail': return <AtelieDetailPage atelie={selectedAtelie} onNavigate={handleNavigate} />;
+                case 'atelieDetailClient': return <AtelieDetailPage atelie={selectedAtelie} onNavigate={handleNavigate} clientView={true} />;
                 case 'landing':
-                default: return <LandingPage onNavigate={handleNavigate} onViewAtelie={handleViewAtelie} />;
+                default: return <LandingPage onNavigate={handleNavigate} onViewAtelie={handleViewAtelie} atelies={atelies}/>;
             }
         }
 

@@ -150,7 +150,7 @@
                             <h1 className="text-2xl font-bold text-pink-600">AteliMatch</h1>
                             <div>
                                 <button onClick={() => onNavigate('login')} className="text-gray-600 hover:text-pink-600 mr-4">Login</button>
-                                <button onClick={() => onNavigate('register')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar Ateliê</button>
+                                <button onClick={() => onNavigate('registerSelection')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar</button>
                             </div>
                         </nav>
                     </header>
@@ -221,7 +221,7 @@
                                 <h1 className="text-2xl font-bold text-pink-600">AteliMatch</h1>
                                 <div>
                                     <button onClick={() => onNavigate('login')} className="text-gray-600 hover:text-pink-600 mr-4">Login</button>
-                                    <button onClick={() => onNavigate('register')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar Ateliê</button>
+                                    <button onClick={() => onNavigate('registerSelection')} className="bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition">Registar</button>
                                 </div>
                             </nav>
                         </header>
@@ -290,9 +290,42 @@
                             <button onClick={() => onLogin('cliente')} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition w-full">Entrar como Cliente</button>
                         </div>
                         <p className="text-center mt-6 text-sm">
-                            <a onClick={() => onNavigate('landing')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">&larr; Voltar para a página inicial</a>
+                            Não tem uma conta? <a onClick={() => onNavigate('registerSelection')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">Registe-se</a>
                         </p>
                     </form>
+                </div>
+            </div>
+        );
+        
+        const RegisterSelectionPage = ({ onNavigate }) => (
+            <div className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+                <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl text-center">
+                    <h1 className="text-3xl font-bold text-gray-800 mb-2">Bem-vindo(a) ao AteliMatch!</h1>
+                    <p className="text-gray-600 mb-8">Escolha como você quer começar.</p>
+                    <div className="flex flex-col md:flex-row gap-6">
+                        {/* Opção Cliente */}
+                        <div 
+                            onClick={() => onNavigate('registerClient')} 
+                            className="flex-1 p-8 border-2 border-purple-200 rounded-lg text-center cursor-pointer hover:bg-purple-50 hover:border-purple-400 transition"
+                        >
+                            <User size={48} className="mx-auto text-purple-600 mb-4" />
+                            <h2 className="text-xl font-semibold text-purple-800">Sou Cliente</h2>
+                            <p className="text-gray-500 mt-2">Quero encontrar ateliês e solicitar serviços.</p>
+                        </div>
+
+                        {/* Opção Ateliê */}
+                        <div 
+                            onClick={() => onNavigate('register')} 
+                            className="flex-1 p-8 border-2 border-pink-200 rounded-lg text-center cursor-pointer hover:bg-pink-50 hover:border-pink-400 transition"
+                        >
+                            <ShoppingBag size={48} className="mx-auto text-pink-600 mb-4" />
+                            <h2 className="text-xl font-semibold text-pink-800">Sou um Ateliê</h2>
+                            <p className="text-gray-500 mt-2">Quero gerenciar meu negócio e encontrar clientes.</p>
+                        </div>
+                    </div>
+                    <p className="text-center mt-8 text-sm">
+                        Já tem uma conta? <a onClick={() => onNavigate('login')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">Faça login</a>
+                    </p>
                 </div>
             </div>
         );
@@ -333,6 +366,39 @@
                             <div className="mb-6"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="senha_reg">Crie uma Senha</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="senha_reg" type="password" placeholder="********" required/></div>
                             <div className="flex items-center justify-between"><button className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition w-full" type="submit">Criar Conta</button></div>
                             <p className="text-center mt-6 text-sm">Já tem uma conta? <a onClick={() => onNavigate('login')} className="font-bold text-pink-600 hover:text-pink-800 cursor-pointer">Faça login</a></p>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+        
+        const ClientRegisterPage = ({ onNavigate, addClient }) => {
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const newClient = {
+                    id: Date.now(),
+                    nome: e.target.nome.value,
+                    email: e.target.email.value,
+                    telefone: e.target.telefone.value,
+                    desde: new Date().toISOString().slice(0, 10)
+                };
+                addClient(newClient);
+                alert('Conta criada com sucesso! Você já pode fazer o login.');
+                onNavigate('login');
+            };
+
+            return (
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center py-12">
+                    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+                        <h1 className="text-3xl font-bold text-purple-600 text-center mb-6">AteliMatch</h1>
+                        <h2 className="text-xl font-semibold text-gray-700 text-center mb-8">Crie sua Conta de Cliente</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nome">Nome Completo</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="nome" type="text" placeholder="Seu nome completo" required/></div>
+                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="email" type="email" placeholder="seuemail@exemplo.com" required/></div>
+                            <div className="mb-4"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telefone">Telefone</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="telefone" type="tel" placeholder="(00) 00000-0000" required/></div>
+                            <div className="mb-6"><label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="senha">Crie uma Senha</label><input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="senha" type="password" placeholder="********" required/></div>
+                            <div className="flex items-center justify-between"><button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition w-full" type="submit">Criar Conta</button></div>
+                            <p className="text-center mt-6 text-sm">Já tem uma conta? <a onClick={() => onNavigate('login')} className="font-bold text-purple-600 hover:text-purple-800 cursor-pointer">Faça login</a></p>
                         </form>
                     </div>
                 </div>
@@ -1080,6 +1146,12 @@
                 updateLocalStorage('atelies', updatedAtelies);
             };
             
+            const addClient = (newClient) => {
+                const updatedClients = [...clientes, newClient];
+                setClientes(updatedClients);
+                updateLocalStorage('clientes', updatedClients);
+            };
+
             const addPedido = (newPedido) => {
                 const updatedPedidos = [...pedidos, newPedido];
                 setPedidos(updatedPedidos);
@@ -1151,7 +1223,9 @@
 
             switch (currentPage) {
                 case 'login': return <LoginPage onNavigate={handleNavigate} onLogin={handleLogin} />;
+                case 'registerSelection': return <RegisterSelectionPage onNavigate={handleNavigate} />;
                 case 'register': return <RegisterPage onNavigate={handleNavigate} addAtelie={addAtelie} />;
+                case 'registerClient': return <ClientRegisterPage onNavigate={handleNavigate} addClient={addClient} />;
                 case 'dashboardAtelie': return <AtelieDashboard onLogout={handleLogout} appData={appData} addPedido={addPedido} addEstoqueItem={addEstoqueItem} updateEstoqueItem={updateEstoqueItem} deleteEstoqueItem={deleteEstoqueItem} updateAtelieDetails={updateAtelieDetails} addMessage={addMessage} />;
                 case 'dashboardClient': return <ClientDashboard onLogout={handleLogout} appData={appData} onViewAtelie={handleViewAtelie} activeTab={clientDashboardTab} setActiveTab={setClientDashboardTab} addMessage={addMessage} addPagamento={addPagamento} />;
                 case 'atelieDetail': return <AtelieDetailPage atelie={selectedAtelie} onNavigate={handleNavigate} />;
